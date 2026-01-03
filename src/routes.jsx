@@ -6,6 +6,11 @@ import {
 import { Layout } from "./pages/Layout";
 import { Home } from "./pages/Home";
 import { Single } from "./pages/Single";
+import { Characters } from "./pages/Characters.jsx";
+import { Starships } from "./pages/Starships.jsx";
+import { Planets } from "./pages/Planets.jsx";
+import { Contacts } from "./pages/Contacts.jsx";
+import { CharacterDetails } from "./pages/CharacterDetails.jsx";
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -15,8 +20,12 @@ export const router = createBrowserRouter(
         {/* Home */}
         <Route path= "/" element={<Home />} />
 
-        {/* Details*/}
         <Route path='details/:type/:id' element={ <Single />} />  
+        <Route path='/characters' element={< Characters />} />
+        <Route path='/starships' element={< Starships />} />
+        <Route path='/planets' element={< Planets />} />
+        <Route path='/contacts' element={< Contacts />} />
+        <Route path='/character-details' element={< CharacterDetails />} />
         
       </Route>
     )
