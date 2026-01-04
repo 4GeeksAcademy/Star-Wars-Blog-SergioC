@@ -43,8 +43,7 @@ export const Characters = () => {
     <div className="container mt-3 mb-5 pb-5">
       <h1 className='text-center'>Characters</h1>
       <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-2'>
-        {characters ? 
-          characters.map((item) =>
+        {characters.map((item) =>
             <div className='col' key={item.uid}>
               <div className='card border-dark rounded my-3 mx-2 text-bg-dark'>
                 <img atl='' src={`https://github.com/tbone849/star-wars-guide/blob/master/build/assets/img/characters/${item.uid}.jpg?raw=true`} />
@@ -59,10 +58,7 @@ export const Characters = () => {
                 </div>
               </div>
             </div>
-          )
-          : 
-          <Spinners />          
-        }
+          )}
       </div>
     </div>
   );

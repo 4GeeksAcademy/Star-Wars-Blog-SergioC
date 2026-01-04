@@ -2,6 +2,8 @@ export const initialStore=()=>{
   return{
     message: null,
     currentCharacter:{},
+    currentStarship:{},
+    currentPlanet:{},
     todos: [
       {
         id: 1,
@@ -21,7 +23,13 @@ export default function storeReducer(store, action = {}) {
   switch(action.type){
 
     case 'character_details':
-      return {...store, currentCharacter: action.payload}
+      return {...store, currentCharacter: action.payload};
+
+    case 'starships_details':
+      return {...store, currentStarship: action.payload};  
+
+    case 'planets_details':
+      return {...store, currentPlanet: action.payload};
 
     case 'set hello':
       return {...store, message: action.payload};
