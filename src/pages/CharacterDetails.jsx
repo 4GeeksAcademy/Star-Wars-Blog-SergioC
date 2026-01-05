@@ -4,14 +4,14 @@ import useGlobalReducer from "../hooks/useGlobalReducer"
 
 export const CharacterDetails = () => {
   const { store } = useGlobalReducer();
-  const [ personajeDetails, setPersonajeDetails ] = useState({})
+  const [personajeDetails, setPersonajeDetails] = useState({})
 
   const getCharactersDetails = async () => {
     const response = await fetch(store.currentCharacter.url)
-    if(!response.ok) {
+    if (!response.ok) {
       return
     }
-    const data = await response.json()    
+    const data = await response.json()
     setPersonajeDetails(data.result.properties)
   }
 
