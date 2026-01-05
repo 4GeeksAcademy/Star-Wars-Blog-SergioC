@@ -17,11 +17,19 @@ export default function storeReducer(store, action = {}) {
     case 'starships_details':
       return {...store, currentStarship: action.payload};  
 
-    case 'planets_details':
+    case 'planets_details': 
       return {...store, currentPlanet: action.payload};
 
     case 'add_favorite':
-      return {...store, favorites : [...store.favorites, action.payload] }   
+      if (store.favorites.includes(action.payload)) {
+        return store;
+      }
+      return {...store, favorites : [...store.favorites, action.payload] };  
+
+    case 'remove_favorite':
+      return {...store, favorites : store.favorites.filter(
+        item => item !== action.payload
+      )}
 
     default: 
       throw Error('Unknown action.');

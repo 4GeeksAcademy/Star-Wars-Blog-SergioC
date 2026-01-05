@@ -33,7 +33,8 @@ export const Card = ({item, imageType}) => {
           <div className='d-flex justify-content-between'>
             <span className='btn btn-secondary btn-details' onClick={() => handleDetails(item)}>Details</span>
             <button onClick={()=> addFavorite(item.name)} className='btn btn-outline-warning' to='#'>
-              <i className='far fa-heart fa-lg'></i>
+              {/* Buscar la forma de que sea un corazon u otro con ternarios */}
+              <i className='far fa-heart fa-lg'></i> 
             </button>
           </div>
         </div>

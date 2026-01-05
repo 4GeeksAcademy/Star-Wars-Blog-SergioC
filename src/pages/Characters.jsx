@@ -48,7 +48,7 @@ export const Characters = () => {
         <h1 className='text-center text-warning characters-title'>Characters</h1>
         <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-2'>
           {characters.map((item) =>
-            <Card key={item.iud} imageType='characters' item={item} />
+            <Card key={item.uid} imageType='characters' item={item} />
           )}
         </div>
       </div>

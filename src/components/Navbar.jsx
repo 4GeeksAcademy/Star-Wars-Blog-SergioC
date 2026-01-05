@@ -4,7 +4,7 @@ import useGlobalReducer from "../hooks/useGlobalReducer";
 
 export const Navbar = () => {
 
-  const {store} = useGlobalReducer()
+  const {store, dispatch} = useGlobalReducer()
  
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-black" style={{ fontFamily: 'Orbitron, sans-serif' }} >
@@ -32,12 +32,14 @@ export const Navbar = () => {
             </li>
 
             <li className="nav-item dropdown">
-              <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Favorites <span className='badge bg-dark text-warning ml-1'>{store.favorites.length}</span>
               </button>
-              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby='dropdownMenuButton'>                
+
+              <ul className="dropdown-menu dropdown-menu-end">                
                 {store.favorites.map((favorite, index) => {
                   return <li key={index}><span className='dropdown-item'>{favorite}</span></li>
+
                 })}
               </ul>
             </li>
