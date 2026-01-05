@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
 import inicioStarWars from '../assets/img/inicioStarWars.jpg';
+import useGlobalReducer from "../hooks/useGlobalReducer";
 
 export const Navbar = () => {
 
+  const {store} = useGlobalReducer()
+ 
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-black" style={{ fontFamily: 'Orbitron, sans-serif'}} >
+    <nav className="navbar navbar-expand-sm navbar-dark bg-black" style={{ fontFamily: 'Orbitron, sans-serif' }} >
       <div className="container">
         <Link className="navbar-brand" to="/">
-          <img alt='' src={inicioStarWars} height={45} className='me-2'/>
+          <img alt='' src={inicioStarWars} height={45} className='me-2' />
         </Link>
 
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,10 +33,12 @@ export const Navbar = () => {
 
             <li className="nav-item dropdown">
               <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                Favorites <span className='badge bg-dark text-warning ml-1'>0</span>
+                Favorites <span className='badge bg-dark text-warning ml-1'>{store.favorites.length}</span>
               </button>
-              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby='dropdownMenuButton'>
-                <li><span className='dropdown-item'>No favorites yet</span></li>
+              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby='dropdownMenuButton'>                
+                {store.favorites.map((favorite, index) => {
+                  return <li key={index}><span className='dropdown-item'>{favorite}</span></li>
+                })}
               </ul>
             </li>
           </ul>

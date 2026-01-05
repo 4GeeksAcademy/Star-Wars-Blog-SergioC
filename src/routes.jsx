@@ -27,7 +27,7 @@ export const router = createBrowserRouter(
         <Route path='/starships' element={< Starships />} />
         <Route path='/planets' element={< Planets />} />
         <Route path='/contacts' element={< Contacts />} />
-        <Route path='/character-details' element={< CharacterDetails />} />
+        <Route path='/characters-details' element={< CharacterDetails />} />
         <Route path='/starships-details' element={< StarshipsDetails />} />
         <Route path='/planets-details' element={< PlanetsDetails />} />
         
