@@ -1,18 +1,22 @@
 import { Link } from "react-router-dom";
+import inicioStarWars from '../assets/img/inicioStarWars.jpg';
 
 export const Navbar = () => {
 
   return (
-    <nav className="navbar navbar-expand-sm bg-body-tertiary">
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="#">Star Wars</Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <nav className="navbar navbar-expand-sm navbar-dark bg-black" style={{ fontFamily: 'Orbitron, sans-serif'}} >
+      <div className="container">
+        <Link className="navbar-brand" to="/">
+          <img alt='' src={inicioStarWars} height={45} className='me-2'/>
+        </Link>
+
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto align-items-center">
             <li className="nav-item">
-              <Link className="nav-link active" to="/characters">Characters</Link>
+              <Link className="nav-link" to="/characters">Characters</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/starships">Starships</Link>
@@ -20,22 +24,19 @@ export const Navbar = () => {
             <li className="nav-item">
               <Link className="nav-link" to='/planets'>Planets</Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item me-3">
               <Link className="nav-link" to='/contacts'>Contacts</Link>
             </li>
-          </ul>
-          <form className="d-flex" role="search">
-            <div className="dropdown">
-              <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown button
+
+            <li className="nav-item dropdown">
+              <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                Favorites <span className='badge bg-dark text-warning ml-1'>0</span>
               </button>
-              <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" to="#">Action</Link></li>
-                <li><Link className="dropdown-item" to="#">Another action</Link></li>
-                <li><Link className="dropdown-item" to="#">Something else here</Link></li>
+              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby='dropdownMenuButton'>
+                <li><span className='dropdown-item'>No favorites yet</span></li>
               </ul>
-            </div>
-          </form>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { Spinners } from "../components/Spinners.jsx";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
-
+import Swal from "sweetalert2";
 
 
 export const Characters = () => {
@@ -11,6 +10,7 @@ export const Characters = () => {
   const { dispatch } = useGlobalReducer();
   const [characters, setCharacters] = useState([])
 
+  // Función para guardar el pesonaje y navegar por el detalle
   const handleDetails = (personaje) => {
     dispatch({
       type: 'character_details',
@@ -19,6 +19,7 @@ export const Characters = () => {
     navigate('/character-details')
   }
 
+  // Función para traer personaes de la API
   const getCharacters = async () => {
     const personajes = JSON.parse(localStorage.getItem('characters'))
     if (!personajes) {
@@ -36,21 +37,39 @@ export const Characters = () => {
   }
 
   useEffect(() => {
-    getCharacters()
-  }, [])
+    getCharacters();
+  }, []);
+
+  useEffect(() => {
+    Swal.fire({
+      title: "Conoce a nuestros personajes 🧑‍🎤 🧑‍🚀",
+      text: "Explora el universo de Star Wars",
+      icon: "success",
+      confirmButtonText: "¡Vamos!",
+      background: "rgba(0, 0, 0, 0.35)",
+      color: "#fff",
+      confirmButtonColor: "#f5c518",
+      customClass: {
+        title: "swal2-title",
+        content: "swal2-content",
+        confirmButton: "swal2-confirm"
+      }
+    });
+  }, []);
 
   return (
-    <div className="container mt-3 mb-5 pb-5">
-      <h1 className='text-center'>Characters</h1>
-      <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-2'>
-        {characters.map((item) =>
+    <div className='characters-wrapper'>
+      <div className='characters-content container'>
+        <h1 className='text-center text-warning characters-title'>Characters</h1>
+        <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-2'>
+          {characters.map((item) =>
             <div className='col' key={item.uid}>
-              <div className='card border-dark rounded my-3 mx-2 text-bg-dark'>
+              <div className='card border-dark rounded my-3 mx-2 text-bg-dark card-shadow'>
                 <img atl='' src={`https://github.com/tbone849/star-wars-guide/blob/master/build/assets/img/characters/${item.uid}.jpg?raw=true`} />
                 <div className='card-body'>
-                  <h5 className='card-title'>{item.name}</h5>
+                  <h5 className='card-title text-warning'>{item.name}</h5>
                   <div className='d-flex justify-content-between'>
-                    <span className='btn btn-secondary' onClick={() => handleDetails(item)}>Details</span>
+                    <span className='btn btn-secondary btn-details' onClick={() => handleDetails(item)}>Details</span>
                     <Link className='btn btn-outline-warning' to='#'>
                       <i className='far fa-heart fa-lg'></i>
                     </Link>
@@ -59,6 +78,7 @@ export const Characters = () => {
               </div>
             </div>
           )}
+        </div>
       </div>
     </div>
   );
