@@ -3,8 +3,6 @@ import Swal from "sweetalert2";
 import fondoCharacters from '../assets/img/logoCharacters.jpg'
 import { useEffect } from "react";
 
-
-
 export const CharacterDetails = () => {
 
   useEffect(() => {

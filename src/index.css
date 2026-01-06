@@ -1,5 +1,4 @@
-.characters-wrapper {
-  background-image: url('./assets/img/logoCharacters.jpg');
+.section-wrapper {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -10,33 +9,50 @@
   position: relative;
 }
 
-.characters-wrapper::before {
+.section-wrapper::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 1;
 }
 
-.characters-content {
+.section-content {
   position: relative;
   z-index: 2;
   padding-bottom: 4rem;
 }
 
-.characters-title, 
-.card-title, 
+
+.bg-characters {
+  background-image: url('./assets/img/logoCharacters.jpg');
+}
+
+.bg-planets {
+  background-image: url('./assets/img/logoPlanets.jpg');
+}
+
+.bg-starships {
+  background-image: url('./assets/img/logoStarships.jpg');
+}
+
+.universal-title,
+.card-title,
 .btn-details {
   font-family: 'Orbitron', sans-serif;
 }
 
+.universal-title {
+  text-align: center;
+  color: #ffc107;
+  margin-bottom: 2rem;
+}
+
 .card-title {
-  font-family: 'Orbitron', sans-serif;
   font-size: 1rem;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card-shadow {

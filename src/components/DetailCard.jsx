@@ -61,7 +61,7 @@ export const DetailCard = ({ type }) => {
 
   return (
     <div className="container mt-3">
-      <h1 className="text-center text-warning mb-4" style={{ fontFamily: 'Orbitron, sans-serif' }}>
+      <h1 className="text-center text-warning universal-title" style={{ fontFamily: 'Orbitron, sans-serif' }}>
         {currentItem?.name}
       </h1>
       <div className='card border-dark text-bg-dark card-shadow d-flex flex-row p-3 mx-auto'

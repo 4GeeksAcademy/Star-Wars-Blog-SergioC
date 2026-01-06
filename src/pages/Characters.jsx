@@ -11,15 +11,14 @@ export const Characters = () => {
     if (!personajes) {
       const uri = `${swapiHost}/people`
       const response = await fetch(uri)
-      if (!response.ok) {
-        return
-      }
+      if (!response.ok) return;
+      
       const data = await response.json()
       localStorage.setItem('characters', JSON.stringify(data.results))
       personajes = data.results
     }
     setCharacters(personajes)
-  }
+  };
 
   useEffect(() => {
     getCharacters();
@@ -42,9 +41,9 @@ export const Characters = () => {
   }, []);
 
   return (
-    <div className='characters-wrapper'>
-      <div className='characters-content container'>
-        <h1 className='text-center text-warning characters-title'>Characters</h1>
+    <div className='section-wrapper bg-characters'>
+      <div className='section-content container'>
+        <h1 className='text-center text-warning universal-title'>Characters</h1>
         <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-2'>
           {characters.map((item) =>
             <Card key={item.uid} imageType='characters' item={item} />
