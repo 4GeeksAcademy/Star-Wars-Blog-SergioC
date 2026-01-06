@@ -4,8 +4,8 @@ import useGlobalReducer from "../hooks/useGlobalReducer";
 
 export const Navbar = () => {
 
-  const {store, dispatch} = useGlobalReducer()
- 
+  const { store, dispatch } = useGlobalReducer()
+
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-black" style={{ fontFamily: 'Orbitron, sans-serif' }} >
       <div className="container">
@@ -24,22 +24,42 @@ export const Navbar = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/starships">Starships</Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item me-2">
               <Link className="nav-link" to='/planets'>Planets</Link>
             </li>
-            <li className="nav-item me-3">
-              <Link className="nav-link" to='/contacts'>Contacts</Link>
-            </li>
-
+            
             <li className="nav-item dropdown">
               <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Favorites <span className='badge bg-dark text-warning ml-1'>{store.favorites.length}</span>
               </button>
 
-              <ul className="dropdown-menu dropdown-menu-end">                
-                {store.favorites.map((favorite, index) => {
-                  return <li key={index}><span className='dropdown-item'>{favorite}</span></li>
+              <ul className="dropdown-menu dropdown-menu-end">
+                {store.favorites.length === 0 && (
+                  <li>
+                    <span className='dropdown-item text-muted'>
+                      Not favorites yet
+                    </span>
+                  </li>
+                )}
 
+                {store.favorites.map((favorite, index) => {
+                  return (
+                    <li key={index} className='dropdown-item d-flex justify-content-between align-items-center'>
+
+                      <span>{favorite}</span>
+
+                      <button className='btn btn-sm text-danger ms-2' onClick={(e) => {
+                        e.stopPropagation();
+                        dispatch({
+                          type: 'remove_favorite',
+                          payload: favorite
+                        })
+                      }}
+                      >
+                        <i className='fa-solid fa-trash'></i>
+                      </button>
+                    </li>
+                  )
                 })}
               </ul>
             </li>

@@ -27,9 +27,8 @@ export const Characters = () => {
 
   useEffect(() => {
     Swal.fire({
-      title: "Conoce a nuestros personajes 🧑‍🎤 🧑‍🚀",
-      text: "Explora el universo de Star Wars",
-      icon: "success",
+      title: "Meet our Characters 🧑‍🎤 🧑‍🚀",
+      text: "Explore the Star Wars universe",
       confirmButtonText: "¡Vamos!",
       background: "rgba(0, 0, 0, 0.35)",
       color: "#fff",
