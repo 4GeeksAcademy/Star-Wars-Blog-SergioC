@@ -7,7 +7,7 @@ export const Characters = () => {
   const [characters, setCharacters] = useState([]);
 
    const getCharacters = async () => {
-    const personajes = JSON.parse(localStorage.getItem('characters'))
+    let personajes = JSON.parse(localStorage.getItem('characters'))
     if (!personajes) {
       const uri = `${swapiHost}/people`
       const response = await fetch(uri)

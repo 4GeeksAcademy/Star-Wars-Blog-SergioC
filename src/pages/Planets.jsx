@@ -7,7 +7,7 @@ export const Planets = () => {
   const [planets, setPlanets] = useState([]);
 
   const getPlanets = async () => {
-    const planetas = JSON.parse(localStorage.getItem('planets'))
+    let planetas = JSON.parse(localStorage.getItem('planets'))
     if (!planetas) {
       const uri = `${swapiHost}/planets`;
       const response = await fetch(uri)

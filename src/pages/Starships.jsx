@@ -6,7 +6,7 @@ export const Starships = () => {
   const swapiHost = 'https://www.swapi.tech/api'
   const [starships, setStarShips] = useState([]);
 
-  const getStarShips = async () => {
+  let getStarShips = async () => {
     const naves = JSON.parse(localStorage.getItem('starships'))
     if (!naves) {
       const uri = `${swapiHost}/starships`;
